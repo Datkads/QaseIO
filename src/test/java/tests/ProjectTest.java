@@ -4,14 +4,14 @@ import org.testng.annotations.Test;
 
 public class ProjectTest extends BaseTest {
 
-    @Test
-    public void projectShouldBeCreated() {
+    @Test(description = "Check a new repository creation")
+    public void repositoryCreation() {
         loginPage.openPage();
         loginPage.login("[YOUR LOGIN]", "[YOUR PASSWORD]");
         projectsPage.waitTillOpened();
         String projectName = faker.name().fullName();
         String projectDescription = faker.lorem().paragraph();
         projectsPage.createNewProject(projectName, projectDescription);
-        projectsPage.isNewProjectCreated();
+        repositoryPage.isNewProjectCreated();
     }
 }

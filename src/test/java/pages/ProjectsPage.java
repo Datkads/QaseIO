@@ -12,7 +12,6 @@ public class ProjectsPage {
     private final String PROJECT_NAME_INPUT_ID = "project-name";
     private final String DESCRIPTION_AREA_INPUT_ID = "description-area";
     private final String CREATE_NEW_PROJECT_BTN_TEXT = "Create project";
-    private final String REPOSITORY_NAME_XPATH = "//div[@id='application-content']//h1[text()=' repository']";
 
     public void openPage() {
         open("/projects");
@@ -29,7 +28,7 @@ public class ProjectsPage {
         $(byText(CREATE_NEW_PROJECT_BTN_TEXT)).click();
     }
 
-    public void isNewProjectCreated() {
-        $(By.xpath(REPOSITORY_NAME_XPATH)).shouldBe(Condition.visible);
+    public void openProject(String projectName) {
+        $(By.xpath(String.format("//*[contains(text(), '%s')]", projectName))).click();
     }
 }
