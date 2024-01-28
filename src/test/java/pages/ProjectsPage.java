@@ -27,6 +27,11 @@ public class ProjectsPage {
         $(By.id(DESCRIPTION_AREA_INPUT_ID)).sendKeys(projectDescription);
         $(byText(CREATE_NEW_PROJECT_BTN_TEXT)).click();
     }
+    public void createNewProject(String projectName) {
+        $(By.id(CREATE_BTN_ID)).click();
+        $(By.id(PROJECT_NAME_INPUT_ID)).sendKeys(projectName);
+        $(byText(CREATE_NEW_PROJECT_BTN_TEXT)).click();
+    }
 
     public void openProject(String projectName) {
         $(By.xpath(String.format("//*[contains(text(), '%s')]", projectName))).click();

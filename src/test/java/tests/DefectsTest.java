@@ -2,14 +2,15 @@ package tests;
 
 import org.testng.annotations.Test;
 
-public class SuiteTest extends BaseTest {
+public class DefectsTest extends BaseTest {
 
-    @Test(description = "Create test suite")
-    public void newSuiteCreation() {
+    @Test(description = "Create defect")
+    public void createDefect() {
         loginPage.openPage();
         loginPage.login("[YOUR LOGIN]", "[YOUR PASSWORD]");
         projectsPage.createNewProject("Diploma Project");
-        repositoryPage.createNewSuite("Suite 1");
+        defectsPage.openPage("DP");
+        defectsPage.createNewDefect("Broken button", "Button should work", "Blocker");
         settingsPage.openPage("DP");
         settingsPage.removeProject();
     }
