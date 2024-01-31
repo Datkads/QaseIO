@@ -2,14 +2,15 @@ package tests;
 
 import org.testng.annotations.Test;
 
-public class SuiteTest extends BaseTest {
+public class MilestonesTest extends BaseTest {
 
-    @Test(description = "Create test suite")
-    public void newSuiteCreation() {
+    @Test(description = "Set the milestone")
+    public void setMilestone() {
         loginPage.openPage();
         loginPage.login("[YOUR LOGIN]", "[YOUR PASSWORD]");
         projectsPage.createNewProject("Diploma Project");
-        repositoryPage.createNewSuite("Suite 1");
+        milestonesPage.openPage("DP");
+        milestonesPage.createNewMilestone("Fix all issues", "ASAP");
         settingsPage.openPage("DP");
         settingsPage.removeProject();
     }

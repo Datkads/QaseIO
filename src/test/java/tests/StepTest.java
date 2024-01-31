@@ -2,14 +2,15 @@ package tests;
 
 import org.testng.annotations.Test;
 
-public class SuiteTest extends BaseTest {
+public class StepTest extends BaseTest {
 
-    @Test(description = "Create test suite")
-    public void newSuiteCreation() {
+    @Test(description = "Create shared step")
+    public void createStep() {
         loginPage.openPage();
         loginPage.login("[YOUR LOGIN]", "[YOUR PASSWORD]");
         projectsPage.createNewProject("Diploma Project");
-        repositoryPage.createNewSuite("Suite 1");
+        stepPage.openPage("DP");
+        stepPage.createNewStep("Step 1", "Grab");
         settingsPage.openPage("DP");
         settingsPage.removeProject();
     }

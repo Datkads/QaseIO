@@ -1,5 +1,8 @@
 package pages;
 
+import com.codeborne.selenide.Condition;
+
+import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
 
@@ -7,6 +10,7 @@ public class LoginPage {
     private final String  EMAIL_CSS = "[name=email]";
     private final String  PASSWORD_CSS = "[name=password]";
     private final String  SUBMIT_BTN_CSS = "[type=submit]";
+    private final String ERROR_MSG_TEXT = "This field is required";
     public void openPage() {
         open("/login");
     }
@@ -15,5 +19,10 @@ public class LoginPage {
         $(EMAIL_CSS).sendKeys(user);
         $(PASSWORD_CSS).sendKeys(pass);
         $(SUBMIT_BTN_CSS).click();
+    }
+
+    public void pressLoginButton() {
+        $(SUBMIT_BTN_CSS).click();
+        $(byText(ERROR_MSG_TEXT)).shouldBe(Condition.visible);
     }
 }
