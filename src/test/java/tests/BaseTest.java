@@ -6,6 +6,7 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Listeners;
 import pages.*;
+import utils.PropertyReader;
 
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 import static com.codeborne.selenide.Selenide.open;
@@ -13,44 +14,49 @@ import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 
 @Listeners(TestListener.class)
 public class BaseTest {
-    LoginPage loginPage;
-    ProjectsPage projectsPage;
-    RepositoryPage repositoryPage;
-    NewCasePage newCasePage;
-    PlanPage planPage;
-    RunPage runPage;
-    RunDashboardPage runDashboardPage;
-    StepPage stepPage;
-    SettingsPage settingsPage;
-    ConfigurationsPage configurationsPage;
-    EnvironmentsPage environmentsPage;
-    DefectsPage defectsPage;
-    MilestonesPage milestonesPage;
     Faker faker;
+    String user;
+    String password;
+    RunPage runPage;
+    StepPage stepPage;
+    PlanPage planPage;
+    LoginPage loginPage;
+    DefectsPage defectsPage;
+    NewCasePage newCasePage;
+    ProjectsPage projectsPage;
+    SettingsPage settingsPage;
+    RepositoryPage repositoryPage;
+    MilestonesPage milestonesPage;
+    RunDashboardPage runDashboardPage;
+    EnvironmentsPage environmentsPage;
+    ConfigurationsPage configurationsPage;
 
     @BeforeMethod
     public void setup() {
         Configuration.browser = "chrome";
-        Configuration.headless = false;
+        Configuration.headless = true;
         Configuration.timeout = 20000;
         Configuration.baseUrl = "https://app.qase.io";
         open();
         getWebDriver().manage().window().maximize();
 
         faker = new Faker();
-        loginPage = new LoginPage();
-        projectsPage = new ProjectsPage();
-        repositoryPage = new RepositoryPage();
-        newCasePage = new NewCasePage();
-        planPage = new PlanPage();
         runPage = new RunPage();
-        runDashboardPage = new RunDashboardPage();
         stepPage = new StepPage();
-        settingsPage = new SettingsPage();
-        configurationsPage = new ConfigurationsPage();
-        environmentsPage = new EnvironmentsPage();
+        planPage = new PlanPage();
+        loginPage = new LoginPage();
         defectsPage = new DefectsPage();
+        newCasePage = new NewCasePage();
+        projectsPage = new ProjectsPage();
+        settingsPage = new SettingsPage();
+        repositoryPage = new RepositoryPage();
         milestonesPage = new MilestonesPage();
+        runDashboardPage = new RunDashboardPage();
+        environmentsPage = new EnvironmentsPage();
+        configurationsPage = new ConfigurationsPage();
+
+        user = System.getProperty("user", PropertyReader.getProperty("user"));
+        password = System.getProperty("password", PropertyReader.getProperty("password"));
     }
 
     @AfterMethod(alwaysRun = true)

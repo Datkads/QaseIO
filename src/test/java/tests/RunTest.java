@@ -1,5 +1,6 @@
 package tests;
 
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
 
 public class RunTest extends BaseTest {
@@ -7,7 +8,7 @@ public class RunTest extends BaseTest {
     @Test(description = "Add new test run")
     public void createRun() {
         loginPage.openPage();
-        loginPage.login("[YOUR LOGIN]", "[YOUR PASSWORD]");
+        loginPage.login(user, password);
         projectsPage.createNewProject("Diploma Project");
         newCasePage.openPage("DP");
         newCasePage.createNewCase("Test 1");
@@ -16,19 +17,23 @@ public class RunTest extends BaseTest {
         runPage.openPage("DP");
         runPage.createNewRun("Smoke");
         runDashboardPage.isTestRunCreated();
-        settingsPage.openPage("DP");
-        settingsPage.removeProject();
     }
 
     @Test(description = "Complete test run")
     public void completeRun() {
         loginPage.openPage();
-        loginPage.login("[YOUR LOGIN]", "[YOUR PASSWORD]");
+        loginPage.login(user, password);
         projectsPage.createNewProject("Diploma Project");
         newCasePage.openPage("DP");
         newCasePage.createNewCase("Test 1");
         runPage.openPage("DP");
         runPage.createNewRunWithCases("Test cases without suite");
         runDashboardPage.testRunSimulation("Test 1", "Passed");
+    }
+
+    @AfterMethod(alwaysRun = true)
+    public void deleteRepository() {
+        settingsPage.openPage("DP");
+        settingsPage.removeProject();
     }
 }

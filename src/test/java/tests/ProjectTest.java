@@ -7,7 +7,7 @@ public class ProjectTest extends BaseTest {
     @Test(description = "Create new project")
     public void createRepository() {
         loginPage.openPage();
-        loginPage.login("[YOUR LOGIN]", "[YOUR PASSWORD]");
+        loginPage.login(user, password);
         projectsPage.waitTillOpened();
         String projectDescription = faker.lorem().paragraph();
         projectsPage.createNewProject("Diploma Project", projectDescription);
@@ -19,7 +19,7 @@ public class ProjectTest extends BaseTest {
     @Test(description = "Delete project")
     public void deleteRepository() {
         loginPage.openPage();
-        loginPage.login("[YOUR LOGIN]", "[YOUR PASSWORD]");
+        loginPage.login(user, password);
         projectsPage.createNewProject("Diploma Project");
         settingsPage.openPage("DP");
         settingsPage.removeProject();
