@@ -13,7 +13,7 @@ public class LoginTest extends BaseTest {
     @Test(description = "Login successfully")
     public void login() {
         loginPage.openPage();
-        loginPage.login("[YOUR LOGIN]", "[YOUR PASSWORD]");
+        loginPage.login(user, password);
         projectsPage.waitTillOpened();
     }
 }

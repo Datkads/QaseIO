@@ -11,7 +11,6 @@ public class PlanPage {
     private final String CREATE_BTN_ID = "createButton";
     private final String TITLE_INPUT_ID = "title";
     private final String ADD_CASES_BTN_ID = "edit-plan-add-cases-button";
-    private final String SELECT_ALL_BTN_TEXT = "Select all";
     private final String CHECKBOX_CSS = "[type=checkbox]";
     private final String DONE_BTN_TEXT = "Done";
     private final String SAVE_BTN_ID = "save-plan";
