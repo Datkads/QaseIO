@@ -32,7 +32,7 @@ public class BaseTest {
     EnvironmentsPage environmentsPage;
     ConfigurationsPage configurationsPage;
 
-    @BeforeMethod
+    @BeforeMethod(description = "Browser settings setup")
     public void setup() {
         Configuration.browser = "chrome";
         Configuration.headless = true;
@@ -60,7 +60,7 @@ public class BaseTest {
         password = System.getProperty("password", PropertyReader.getProperty("password"));
     }
 
-    @AfterMethod(alwaysRun = true)
+    @AfterMethod(alwaysRun = true, description = "Browser shutdown")
     public void tearDown() {
         closeWebDriver();
     }
