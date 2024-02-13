@@ -29,4 +29,6 @@ jobs:
         cache: maven
     - name: Run Tests
       run: mvn clean test
-      
+      env:
+        USER: ${{ secrets.USER }}
+        PASSWORD: ${{ secrets.PASSWORD }}
