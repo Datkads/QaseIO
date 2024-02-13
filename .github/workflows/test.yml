@@ -28,7 +28,7 @@ jobs:
         distribution: 'temurin'
         cache: maven
     - name: Run Tests
-      run: mvn clean test
+      run: mvn clean test -Duser=$USER -Dpassword=$PASSWORD
       env:
         USER: ${{ secrets.USER }}
         PASSWORD: ${{ secrets.PASSWORD }}
