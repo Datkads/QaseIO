@@ -1,6 +1,7 @@
 package pages;
 
 import com.codeborne.selenide.Condition;
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 
 import static com.codeborne.selenide.Selectors.byText;
@@ -13,10 +14,12 @@ public class ConfigurationsPage {
     private final String QUICK_CONFIG_BTN_CSS = "[class=quick-button]";
     private final String QUICK_CONFIG_INPUT_CSS = "[class=quick-input]";
 
+    @Step("Opening configuration page")
     public void openPage(String projectAbbreviation) {
         open(String.format("/configuration/%s", projectAbbreviation));
     }
 
+    @Step("Creating configuration group \"{configGroup}\", with config \"{config}\"")
     public void createNewConfigurationGroup(String configGroup, String config) {
         $(byText(CREATE_CONFIG_GROUP_BTN_TEXT)).click();
         $(By.id(CONFIG_TITLE_INPUT_ID)).sendKeys(configGroup);

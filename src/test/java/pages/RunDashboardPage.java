@@ -1,6 +1,7 @@
 package pages;
 
 import com.codeborne.selenide.Condition;
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 
 import static com.codeborne.selenide.Selectors.byText;
@@ -13,10 +14,12 @@ public class RunDashboardPage {
     private final String STATUS_ICON_XPATH = "//*[contains(text(), 'Test 1')]//parent:" +
             ":div//div[contains(text(), '%s')]";
 
+    @Step("Checking if test run is created")
     public void isTestRunCreated() {
         $(byText(OPEN_WIZARD_BTN_TEXT)).shouldBe(Condition.visible);
     }
 
+    @Step("Simulating test run")
     public void testRunSimulation(String caseTitle, String caseStatus) {
         $(byText(OPEN_WIZARD_BTN_TEXT)).click();
         $(By.xpath(String.format(CASE_CHECKBOX_XPATH, caseTitle))).click();

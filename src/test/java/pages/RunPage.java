@@ -1,5 +1,7 @@
 package pages;
 
+import io.qameta.allure.Step;
+import jdk.jfr.SettingDefinition;
 import org.openqa.selenium.By;
 
 import static com.codeborne.selenide.Selectors.byText;
@@ -15,10 +17,12 @@ public class RunPage {
     private final String DONE_BTN_TEXT = "Done";
     private final String START_RUN_BTN_TEXT = "Start a run";
 
+    @Step("Opening run page")
     public void openPage(String projectAbbreviation) {
         open(String.format("/run/%s", projectAbbreviation));
     }
 
+    @Step("Creating new run with plan \"{planTitle}\"")
     public void createNewRun(String planTitle) {
         $(byText(NEW_TEST_RUN_BTN_TEXT)).click();
         $$(RADIO_BTN_CSS).get(1).click();
@@ -27,6 +31,7 @@ public class RunPage {
         $(byText(START_RUN_BTN_TEXT)).click();
     }
 
+    @Step("Creating new run with test cases")
     public void createNewRunWithCases(String suiteTitle) {
         $(byText(NEW_TEST_RUN_BTN_TEXT)).click();
         $(byText(SELECT_CASES_BTN_TEXT)).click();

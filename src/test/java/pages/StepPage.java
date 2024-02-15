@@ -1,6 +1,7 @@
 package pages;
 
 import com.codeborne.selenide.Condition;
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 
 import static com.codeborne.selenide.Selectors.byText;
@@ -14,10 +15,12 @@ public class StepPage {
     private final String STEP_ACTION_INPUT_XPATH = "//p[@data-placeholder='Step Action']";
     private final String CREATE_BTN_CSS = "[type=submit]";
 
+    @Step("Opening step page")
     public void openPage(String projectAbbreviation) {
         open(String.format("/step/%s", projectAbbreviation));
     }
 
+    @Step("Creating step \"{stepTitle}\", with action \"{stepAction}\"")
     public void createNewStep(String stepTitle, String stepAction) {
      $(byText(CREATE_STEP_BTN_TEXT)).click();
      $(By.id(STEP_TITLE_ID)).sendKeys(stepTitle);

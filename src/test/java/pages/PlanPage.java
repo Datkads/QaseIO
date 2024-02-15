@@ -1,7 +1,9 @@
 package pages;
 
 import com.codeborne.selenide.Condition;
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
+import org.testng.annotations.Test;
 
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.$;
@@ -15,10 +17,12 @@ public class PlanPage {
     private final String DONE_BTN_TEXT = "Done";
     private final String SAVE_BTN_ID = "save-plan";
 
+    @Step("Opening plan page")
     public void openPage(String projectAbbreviation) {
         open(String.format("/plan/%s", projectAbbreviation));
     }
 
+    @Step("Creating new plan \"{testPlanName}\"")
     public void createNewPlan(String testPlanName) {
         $(By.id(CREATE_BTN_ID)).click();
         $(By.id(TITLE_INPUT_ID)).sendKeys(testPlanName);
