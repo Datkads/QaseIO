@@ -18,7 +18,7 @@ public class LoginPage {
         open("/login");
     }
 
-    @Step("Login by \"{user}\", \"{pass}\"")
+    @Step("Login with personal credentials")
     public void login(String user, String pass) {
         $(EMAIL_CSS).sendKeys(user);
         $(PASSWORD_CSS).sendKeys(pass);
