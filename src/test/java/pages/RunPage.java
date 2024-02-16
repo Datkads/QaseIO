@@ -1,12 +1,13 @@
 package pages;
 
 import io.qameta.allure.Step;
-import jdk.jfr.SettingDefinition;
+import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.By;
 
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 
+@Log4j2
 public class RunPage {
     private final String NEW_TEST_RUN_BTN_TEXT = "Start new test run";
     private final String RADIO_BTN_CSS = "[type=radio]";
@@ -19,11 +20,13 @@ public class RunPage {
 
     @Step("Opening run page")
     public void openPage(String projectAbbreviation) {
+        log.info("Opening run page");
         open(String.format("/run/%s", projectAbbreviation));
     }
 
-    @Step("Creating new run with plan \"{planTitle}\"")
+    @Step("Creating new run with plan '{planTitle}'")
     public void createNewRun(String planTitle) {
+        log.info("Creating new run with plan '{}'", planTitle);
         $(byText(NEW_TEST_RUN_BTN_TEXT)).click();
         $$(RADIO_BTN_CSS).get(1).click();
         $(By.xpath(TEST_PLAN_INPUT_XPATH)).click();
@@ -33,6 +36,7 @@ public class RunPage {
 
     @Step("Creating new run with test cases")
     public void createNewRunWithCases(String suiteTitle) {
+        log.info("Creating new run with test cases");
         $(byText(NEW_TEST_RUN_BTN_TEXT)).click();
         $(byText(SELECT_CASES_BTN_TEXT)).click();
         $(By.xpath(String.format(SUITE_CHECKBOX_XPATH, suiteTitle))).click();

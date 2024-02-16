@@ -2,13 +2,14 @@ package pages;
 
 import com.codeborne.selenide.Condition;
 import io.qameta.allure.Step;
+import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.By;
-import org.testng.annotations.Test;
 
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
 
+@Log4j2
 public class PlanPage {
     private final String CREATE_BTN_ID = "createButton";
     private final String TITLE_INPUT_ID = "title";
@@ -19,11 +20,13 @@ public class PlanPage {
 
     @Step("Opening plan page")
     public void openPage(String projectAbbreviation) {
+        log.info("Opening plan page");
         open(String.format("/plan/%s", projectAbbreviation));
     }
 
-    @Step("Creating new plan \"{testPlanName}\"")
+    @Step("Creating new plan '{testPlanName}'")
     public void createNewPlan(String testPlanName) {
+        log.info("Creating new plan '{}'", testPlanName);
         $(By.id(CREATE_BTN_ID)).click();
         $(By.id(TITLE_INPUT_ID)).sendKeys(testPlanName);
         $(By.id(ADD_CASES_BTN_ID)).click();

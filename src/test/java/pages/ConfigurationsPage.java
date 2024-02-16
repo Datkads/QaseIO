@@ -2,11 +2,13 @@ package pages;
 
 import com.codeborne.selenide.Condition;
 import io.qameta.allure.Step;
+import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.By;
 
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 
+@Log4j2
 public class ConfigurationsPage {
     private final String CREATE_CONFIG_GROUP_BTN_TEXT = "Create configuration group";
     private final String CONFIG_TITLE_INPUT_ID = "confirm";
@@ -16,11 +18,13 @@ public class ConfigurationsPage {
 
     @Step("Opening configuration page")
     public void openPage(String projectAbbreviation) {
+        log.info("Opening configuration page");
         open(String.format("/configuration/%s", projectAbbreviation));
     }
 
-    @Step("Creating configuration group \"{configGroup}\", with config \"{config}\"")
+    @Step("Creating configuration group '{configGroup}', with config '{config}'")
     public void createNewConfigurationGroup(String configGroup, String config) {
+        log.info("Creating configuration group '{}', with config '{}'", configGroup, config);
         $(byText(CREATE_CONFIG_GROUP_BTN_TEXT)).click();
         $(By.id(CONFIG_TITLE_INPUT_ID)).sendKeys(configGroup);
         $(CREATE_BTN_CSS).click();
