@@ -3,6 +3,8 @@ package tests;
 import org.testng.annotations.Test;
 
 public class ProjectTest extends BaseTest {
+    String projectName = "Diploma Project";
+    String projectAbbreviation = "DP";
 
     @Test(description = "Create new project")
     public void createRepository() {
@@ -10,18 +12,18 @@ public class ProjectTest extends BaseTest {
         loginPage.login(user, password);
         projectsPage.waitTillOpened();
         String projectDescription = faker.lorem().paragraph();
-        projectsPage.createNewProject("Diploma Project", projectDescription);
+        projectsPage.createNewProject(projectName, projectDescription);
         repositoryPage.isNewProjectCreated();
-        settingsPage.openPage("DP");
-        settingsPage.removeProject();
+        settingsPage.openPage(projectAbbreviation);
+        settingsPage.removeProject(projectName);
     }
 
     @Test(description = "Delete project")
     public void deleteRepository() {
         loginPage.openPage();
         loginPage.login(user, password);
-        projectsPage.createNewProject("Diploma Project");
-        settingsPage.openPage("DP");
-        settingsPage.removeProject();
+        projectsPage.createNewProject(projectName);
+        settingsPage.openPage(projectAbbreviation);
+        settingsPage.removeProject(projectName);
     }
 }

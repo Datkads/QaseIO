@@ -4,19 +4,21 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
 
 public class StepTest extends BaseTest {
+    String projectName = "Diploma Project";
+    String projectAbbreviation = "DP";
 
     @Test(description = "Create shared step")
     public void createStep() {
         loginPage.openPage();
         loginPage.login(user, password);
-        projectsPage.createNewProject("Diploma Project");
-        stepPage.openPage("DP");
+        projectsPage.createNewProject(projectName);
+        stepPage.openPage(projectAbbreviation);
         stepPage.createNewStep("Step 1", "Grab");
     }
 
-    @AfterMethod(alwaysRun = true)
+    @AfterMethod(alwaysRun = true, description = "Delete Project")
     public void deleteRepository() {
-        settingsPage.openPage("DP");
-        settingsPage.removeProject();
+        settingsPage.openPage(projectAbbreviation);
+        settingsPage.removeProject(projectName);
     }
 }

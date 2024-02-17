@@ -4,19 +4,21 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
 
 public class DefectsTest extends BaseTest {
+    String projectName = "Diploma Project";
+    String projectAbbreviation = "DP";
 
     @Test(description = "Create defect")
     public void createDefect() {
         loginPage.openPage();
         loginPage.login(user, password);
-        projectsPage.createNewProject("Diploma Project");
-        defectsPage.openPage("DP");
+        projectsPage.createNewProject(projectName);
+        defectsPage.openPage(projectAbbreviation);
         defectsPage.createNewDefect("Broken button", "Button should work", "Blocker");
     }
 
-    @AfterMethod(alwaysRun = true)
+    @AfterMethod(alwaysRun = true, description = "Delete Project")
     public void deleteRepository() {
-        settingsPage.openPage("DP");
-        settingsPage.removeProject();
+        settingsPage.openPage(projectAbbreviation);
+        settingsPage.removeProject(projectName);
     }
 }

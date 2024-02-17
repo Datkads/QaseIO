@@ -1,12 +1,15 @@
 package tests;
 
 import com.codeborne.selenide.Configuration;
+import com.codeborne.selenide.logevents.SelenideLogger;
 import com.github.javafaker.Faker;
+import io.qameta.allure.selenide.AllureSelenide;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Listeners;
 import pages.*;
 import utils.PropertyReader;
+import utils.TestListener;
 
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 import static com.codeborne.selenide.Selenide.open;
@@ -31,7 +34,7 @@ public class BaseTest {
     EnvironmentsPage environmentsPage;
     ConfigurationsPage configurationsPage;
 
-    @BeforeMethod
+    @BeforeMethod(description = "Browser settings setup")
     public void setup() {
         Configuration.browser = "chrome";
         Configuration.headless = true;
@@ -39,6 +42,7 @@ public class BaseTest {
         Configuration.baseUrl = "https://app.qase.io";
         open();
         getWebDriver().manage().window().maximize();
+        SelenideLogger.addListener("AllureSelenide", new AllureSelenide());
 
         faker = new Faker();
         runPage = new RunPage();
@@ -59,7 +63,7 @@ public class BaseTest {
         password = System.getProperty("password", PropertyReader.getProperty("password"));
     }
 
-    @AfterMethod(alwaysRun = true)
+    @AfterMethod(alwaysRun = true, description = "Browser shutdown")
     public void tearDown() {
         closeWebDriver();
     }
