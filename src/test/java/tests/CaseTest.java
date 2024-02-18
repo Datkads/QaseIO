@@ -14,6 +14,7 @@ public class CaseTest extends BaseTest {
         projectsPage.createNewProject(projectName);
         repositoryPage.pressNewCaseButton();
         newCasePage.createNewCase("Test 1");
+        newCasePage.checkIfCaseIsCreated("Test 1");
     }
 
     @Test(description = "Create a quick test case")
@@ -23,6 +24,7 @@ public class CaseTest extends BaseTest {
         projectsPage.createNewProject(projectName);
         repositoryPage.createNewSuite("Suite 1");
         repositoryPage.createNewQuickCase("Test 1");
+        repositoryPage.checkIfQuickCaseIsCreated("Test 1");
     }
 
     @AfterMethod(alwaysRun = true, description = "Delete Project")

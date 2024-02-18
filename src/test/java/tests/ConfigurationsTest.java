@@ -14,6 +14,7 @@ public class ConfigurationsTest extends BaseTest {
         projectsPage.createNewProject(projectName);
         configurationsPage.openPage(projectAbbreviation);
         configurationsPage.createNewConfigurationGroup("Mobile OS", "iOS");
+        configurationsPage.checkIfConfigurationIsCreated("iOS");
     }
 
     @AfterMethod(alwaysRun = true, description = "Delete Project")

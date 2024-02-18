@@ -29,6 +29,11 @@ public class MilestonesPage {
         $(By.id(MILESTONE_NAME_INPUT_ID)).sendKeys(milestoneName);
         $(By.xpath(DESCRIPTION_TEXTAREA_XPATH)).sendKeys(description);
         $(CREATE_BTN_CSS).click();
+    }
+
+    @Step("Checking if milestone '{milestoneName}' is created")
+    public void checkIfMilestoneIsCreated(String milestoneName) {
+        log.info("Checking if milestone '{}' is created", milestoneName);
         $(byText(milestoneName)).shouldBe(Condition.visible);
     }
 }

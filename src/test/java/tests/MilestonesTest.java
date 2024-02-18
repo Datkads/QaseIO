@@ -14,6 +14,7 @@ public class MilestonesTest extends BaseTest {
         projectsPage.createNewProject(projectName);
         milestonesPage.openPage(projectAbbreviation);
         milestonesPage.createNewMilestone("Fix all issues", "ASAP");
+        milestonesPage.checkIfMilestoneIsCreated("Fix all issues");
     }
 
     @AfterMethod(alwaysRun = true, description = "Delete Project")

@@ -16,6 +16,7 @@ public class PlanTest extends BaseTest {
         newCasePage.createNewCase("Test 1");
         planPage.openPage(projectAbbreviation);
         planPage.createNewPlan("Smoke");
+        planPage.checkingIfPlanIsCreated("Smoke");
     }
 
     @AfterMethod(alwaysRun = true, description = "Delete Project")

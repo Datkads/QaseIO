@@ -25,6 +25,11 @@ public class NewCasePage {
         log.info("Creating new case '{}'", caseTitle);
         $(By.id(CASE_TITLE_ID)).sendKeys(caseTitle);
         $(By.id(SAVE_CASE_BTN_ID)).click();
+    }
+
+    @Step("Checking if new case '{caseTitle}' is created")
+    public void checkIfCaseIsCreated(String caseTitle) {
+        log.info("Checking if new case '{}' is created", caseTitle);
         $(byText(caseTitle)).shouldBe(Condition.visible);
     }
 }

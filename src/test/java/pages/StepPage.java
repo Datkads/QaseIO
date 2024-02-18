@@ -31,6 +31,11 @@ public class StepPage {
         $(By.xpath(ADD_STEP_BTN_XPATH)).click();
         $(By.xpath(STEP_ACTION_INPUT_XPATH)).sendKeys(stepAction);
         $(CREATE_BTN_CSS).click();
+    }
+
+    @Step("Checking if step '{stepTitle}' is created")
+    public void checkIfStepIsCreated(String stepTitle) {
+        log.info("Checking if step '{}' is created", stepTitle);
         $(byText(stepTitle)).shouldBe(Condition.visible);
     }
 }

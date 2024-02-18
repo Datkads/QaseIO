@@ -14,6 +14,7 @@ public class StepTest extends BaseTest {
         projectsPage.createNewProject(projectName);
         stepPage.openPage(projectAbbreviation);
         stepPage.createNewStep("Step 1", "Grab");
+        stepPage.checkIfStepIsCreated("Step 1");
     }
 
     @AfterMethod(alwaysRun = true, description = "Delete Project")

@@ -31,6 +31,11 @@ public class DefectsPage {
         $$(By.xpath(SEVERITY_INPUT_XPATH)).get(0).click();
         $(byText(severity)).click();
         $(CREATE_BTN_CSS).click();
+    }
+
+    @Step("Checking if defect '{defectTitle}' is created")
+    public void checkIfDefectIsCreated(String defectTitle) {
+        log.info("Checking if defect '{}' is created", defectTitle);
         $(byText(defectTitle)).shouldBe(Condition.visible);
     }
 }

@@ -14,6 +14,7 @@ public class EnvironmentsTest extends BaseTest {
         projectsPage.createNewProject(projectName);
         environmentsPage.openPage(projectAbbreviation);
         environmentsPage.createEnvironment("STG1", "Stage");
+        environmentsPage.checkIfEnvironmentIsCreated("STG1");
     }
 
     @AfterMethod(alwaysRun = true, description = "Delete Project")
