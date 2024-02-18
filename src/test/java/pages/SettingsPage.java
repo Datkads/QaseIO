@@ -24,6 +24,11 @@ public class SettingsPage {
         log.info("Deleting project '{}'", projectName);
         $$(By.xpath(DELETE_PROJECT_BTN_XPATH)).get(1).click();
         $(By.xpath(CONFIRM_BTN_XPATH)).click();
+    }
+
+    @Step("Checking if project '{projectName}' is deleted")
+    public void checkIfProjectIsDeleted(String projectName) {
+        log.info("Checking if project '{}' is deleted", projectName);
         $(byText(projectName)).shouldNotBe(Condition.visible);
     }
 }

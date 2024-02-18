@@ -31,6 +31,7 @@ public class RunTest extends BaseTest {
         runPage.openPage(projectAbbreviation);
         runPage.createNewRunWithCases("Test cases without suite");
         runDashboardPage.testRunSimulation("Test 1", "Passed");
+        runDashboardPage.checkIfTestRunIsCompleted("Passed");
     }
 
     @AfterMethod(alwaysRun = true, description = "Delete Project")

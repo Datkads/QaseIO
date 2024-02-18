@@ -13,6 +13,7 @@ public class SuiteTest extends BaseTest {
         loginPage.login(user, password);
         projectsPage.createNewProject(projectName);
         repositoryPage.createNewSuite("Suite 1");
+        repositoryPage.checkIfSuiteIsCreated("Suite 1");
     }
 
     @AfterMethod(alwaysRun = true, description = "Delete Project")

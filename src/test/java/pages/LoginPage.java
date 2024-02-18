@@ -21,18 +21,23 @@ public class LoginPage {
         open("/login");
     }
 
-    @Step("Login with personal credentials")
+    @Step("Logging with personal credentials")
     public void login(String user, String pass) {
-        log.info("Login with personal credentials");
+        log.info("Logging with personal credentials");
         $(EMAIL_CSS).sendKeys(user);
         $(PASSWORD_CSS).sendKeys(pass);
         $(SUBMIT_BTN_CSS).click();
     }
 
-    @Step("Press login button and check for error message")
+    @Step("Pressing login button")
     public void pressLoginButton() {
-        log.info("Press login button and check for error message");
+        log.info("Pressing login button");
         $(SUBMIT_BTN_CSS).click();
+    }
+
+    @Step("Checking if error message is appeared")
+    public void checkIfErrorIsAppeared() {
+        log.info("Checking if error message is appeared");
         $(byText(ERROR_MSG_TEXT)).shouldBe(Condition.visible);
     }
 }

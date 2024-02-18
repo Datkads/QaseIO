@@ -37,6 +37,11 @@ public class RepositoryPage {
         $(By.id(NEW_SUITE_BTN_ID)).click();
         $(By.id(SUITE_TITLE_INPUT_ID)).sendKeys(suiteTitle);
         $(byText(CREATE_SUITE_BTN_TEXT)).click();
+    }
+
+    @Step("Checking if suite '{suiteTitle}' is created")
+    public void checkIfSuiteIsCreated(String suiteTitle) {
+        log.info("Checking if suite '{}' is created", suiteTitle);
         $(String.format("[title='%s']", suiteTitle)).shouldBe(Condition.visible);
     }
 
@@ -52,6 +57,11 @@ public class RepositoryPage {
         $(By.xpath(QUICK_CASE_BTN_XPATH)).click();
         $(By.xpath(QUICK_CASE_INPUT_XPATH)).sendKeys(caseTitle);
         $(By.xpath(QUICK_CASE_INPUT_XPATH)).pressEnter();
+    }
+
+    @Step("Checking if a quick case '{caseTitle}' is created")
+    public void checkIfQuickCaseIsCreated(String caseTitle) {
+        log.info("Checking if a quick case '{}' is created", caseTitle);
         $(byText(caseTitle)).shouldBe(Condition.visible);
     }
 }

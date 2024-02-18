@@ -14,6 +14,7 @@ public class DefectsTest extends BaseTest {
         projectsPage.createNewProject(projectName);
         defectsPage.openPage(projectAbbreviation);
         defectsPage.createNewDefect("Broken button", "Button should work", "Blocker");
+        defectsPage.checkIfDefectIsCreated("Broken button");
     }
 
     @AfterMethod(alwaysRun = true, description = "Delete Project")

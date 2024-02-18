@@ -8,6 +8,7 @@ public class LoginTest extends BaseTest {
     public void emptyLogin() {
         loginPage.openPage();
         loginPage.pressLoginButton();
+        loginPage.checkIfErrorIsAppeared();
     }
 
     @Test(description = "Login successfully")

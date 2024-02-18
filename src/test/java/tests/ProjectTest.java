@@ -25,5 +25,6 @@ public class ProjectTest extends BaseTest {
         projectsPage.createNewProject(projectName);
         settingsPage.openPage(projectAbbreviation);
         settingsPage.removeProject(projectName);
+        settingsPage.checkIfProjectIsDeleted(projectName);
     }
 }

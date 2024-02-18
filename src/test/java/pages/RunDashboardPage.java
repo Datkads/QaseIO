@@ -28,6 +28,11 @@ public class RunDashboardPage {
         $(byText(OPEN_WIZARD_BTN_TEXT)).click();
         $(By.xpath(String.format(CASE_CHECKBOX_XPATH, caseTitle))).click();
         $(byText(String.format(STATUS_BTN_TEXT, caseStatus))).click();
+    }
+
+    @Step("Checking if test run is completed with status '{caseStatus}'")
+    public void checkIfTestRunIsCompleted(String caseStatus) {
+        log.info("Checking if test run is completed with status '{}'", caseStatus);
         $(By.xpath(String.format(STATUS_ICON_XPATH, caseStatus))).shouldBe(Condition.visible);
     }
 }

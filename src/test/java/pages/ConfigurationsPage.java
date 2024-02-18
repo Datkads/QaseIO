@@ -22,15 +22,20 @@ public class ConfigurationsPage {
         open(String.format("/configuration/%s", projectAbbreviation));
     }
 
-    @Step("Creating configuration group '{configGroup}', with config '{config}'")
+    @Step("Creating configuration '{configGroup}', with config '{config}'")
     public void createNewConfigurationGroup(String configGroup, String config) {
-        log.info("Creating configuration group '{}', with config '{}'", configGroup, config);
+        log.info("Creating configuration '{}', with config '{}'", configGroup, config);
         $(byText(CREATE_CONFIG_GROUP_BTN_TEXT)).click();
         $(By.id(CONFIG_TITLE_INPUT_ID)).sendKeys(configGroup);
         $(CREATE_BTN_CSS).click();
         $$(QUICK_CONFIG_BTN_CSS).get(0).click();
         $(QUICK_CONFIG_INPUT_CSS).sendKeys(config);
         $(QUICK_CONFIG_INPUT_CSS).pressEnter();
+    }
+
+    @Step("Checking if configuration {config} is created")
+    public void checkIfConfigurationIsCreated(String config) {
+        log.info("Checking if configuration {} is created", config);
         $(byText(config)).shouldBe(Condition.visible);
     }
 }

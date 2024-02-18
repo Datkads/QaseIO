@@ -29,6 +29,11 @@ public class EnvironmentsPage {
         $(By.id(TITLE_INPUT_ID)).sendKeys(title);
         $(By.id(SLUG_INPUT_ID)).sendKeys(slug);
         $(CREATE_BTN_CSS).click();
+    }
+
+    @Step("Checking if environment '{title}' is created")
+    public void checkIfEnvironmentIsCreated(String title) {
+        log.info("Checking if environment '{}' is created", title);
         $(byText(title)).shouldBe(Condition.visible);
     }
 }

@@ -33,6 +33,11 @@ public class PlanPage {
         $(CHECKBOX_CSS).click();
         $(byText(DONE_BTN_TEXT)).click();
         $(By.id(SAVE_BTN_ID)).click();
+    }
+
+    @Step("Checking if plan '{testPlanName}' is created")
+    public void checkingIfPlanIsCreated(String testPlanName) {
+        log.info("Checking if plan '{}' is created", testPlanName);
         $(byText(testPlanName)).shouldBe(Condition.visible);
     }
 }
