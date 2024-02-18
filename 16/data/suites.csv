@@ -1,0 +1,5 @@
+"Status","Start Time","Stop Time","Duration in ms","Parent Suite","Suite","Sub Suite","Test Class","Test Method","Name","Description"
+"passed","Sun Feb 18 09:07:22 GMT 2024","Sun Feb 18 09:07:25 GMT 2024","3163","Qase Smoke Test","Thread #1","tests.LoginTest","tests.LoginTest","emptyLogin","Check empty fields login",""
+"passed","Sun Feb 18 09:07:22 GMT 2024","Sun Feb 18 09:07:31 GMT 2024","8432","Qase Smoke Test","Thread #3","tests.MilestonesTest","tests.MilestonesTest","setMilestone","Set the milestone",""
+"passed","Sun Feb 18 09:07:26 GMT 2024","Sun Feb 18 09:07:30 GMT 2024","3580","Qase Smoke Test","Thread #1","tests.LoginTest","tests.LoginTest","login","Login successfully",""
+"passed","Sun Feb 18 09:07:22 GMT 2024","Sun Feb 18 09:07:31 GMT 2024","8941","Qase Smoke Test","Thread #2","tests.DefectsTest","tests.DefectsTest","createDefect","Create defect",""
